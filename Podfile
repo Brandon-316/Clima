@@ -8,7 +8,7 @@ target 'Clima' do
   # Pods for Clima
 
     pod 'SwiftyJSON'
-    pod 'Alamofire'
+    pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire'
     pod 'SVProgressHUD'
 
 end
