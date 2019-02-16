@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
@@ -49,7 +50,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     //Write the getWeatherData method here:
     func getWeatherData(url: String, paramaters: [String: String]) {
-        
+        SVProgressHUD.show()
         AF.request(url, method: .get, parameters: paramaters).responseJSON {
 //            .validate(statusCode: 200..<300)
             response in
@@ -61,6 +62,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
                 print("Error: \(String(describing: response.result.error))")
                 self.cityLabel.text = "Connection Issues"
             }
+            SVProgressHUD.dismiss()
         }
     }
 
